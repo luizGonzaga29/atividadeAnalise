@@ -15,4 +15,9 @@ public class ValidarCampos {
 			throw new LivrariaException("Quantidade deve ser um valor maior que zero!");
 		}
 	}
+	public void validarAutorTitulo(String autor, String titulo) {
+		if(autor.equals("") || titulo.equals("")) {
+			throw new LivrariaException("Livro deve conter autor e título!");
+		}
+	}
 }

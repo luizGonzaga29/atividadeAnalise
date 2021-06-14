@@ -10,6 +10,7 @@ public class Fachada {
 	public void inserirLivro(BooksEntity be) {
 		vc.validarPrecoLivro(be.getPrice());
 		vc.validarQtdLivro(be.getQty());
+		vc.validarAutorTitulo(be.getAuthor(), be.getTitle());
 		persistencia.inserirLivro(be);
 	}
 }
