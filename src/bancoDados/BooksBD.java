@@ -1,7 +1,7 @@
 package bancoDados;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import interfaceUsuario.BooksEntity;
 
 public class BooksBD {
 
-	private static Connection connection;
+	/*private static Connection connection;
 
 	public static Connection getConnection() {
 		try {
@@ -35,22 +35,22 @@ public class BooksBD {
 				e.printStackTrace();
 			}
 		}
-	}
+	}*/
 
 	public void inserir(BooksEntity booksEntity)  {
 
 		try {
 			
-				connection = getConnection();
+				//Conexao.connection = getConnection();
 				String sql = "INSERT INTO books(id, title, author, price, qty) VALUES(?,?,?,?,?)";
-				PreparedStatement pstm = connection.prepareStatement(sql);
+				PreparedStatement pstm = Conexao.getConnection().prepareStatement(sql);
 				pstm.setInt(1, booksEntity.getId());
 				pstm.setString(2, booksEntity.getTitle());
 				pstm.setString(3, booksEntity.getAuthor());
 				pstm.setFloat(4, booksEntity.getPrice());
 				pstm.setInt(5, booksEntity.getQty());
 				pstm.execute();
-				closeConnection();
+				Conexao.closeConnection();
 				pstm.close();
 			
 		} catch (SQLException e) {
@@ -61,9 +61,9 @@ public class BooksBD {
 	public BooksEntity verificarSeExisteLivro(int id)  {
 		BooksEntity be = null;
 		try {
-			connection = getConnection();
+			//connection = getConnection();
 			String sql = "SELECT * FROM books WHERE id = " + id;
-			PreparedStatement pstm = connection.prepareStatement(sql);
+			PreparedStatement pstm = Conexao.getConnection().prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
 			if(rs.next()) {
 				be = new BooksEntity(rs.getInt("id"), rs.getString("title"), rs.getString("author"),
@@ -72,7 +72,7 @@ public class BooksBD {
 			}
 			rs.close();
 			pstm.close();
-			closeConnection();
+			Conexao.closeConnection();
 		}catch (SQLException e ) {
 			System.out.println("Error verificarSeExisteId " + e.getMessage());
 		}

@@ -80,7 +80,7 @@ public class ViewLivraria {
 				JOptionPane.showMessageDialog(null, "Algo errado! " + msn.getMessage());
 				
 			}catch (NumberFormatException msn) {
-				JOptionPane.showMessageDialog(null, "Os campos price e qty devem conter valores númericos!"
+				JOptionPane.showMessageDialog(null, "Os campos price, id e qty devem conter valores númericos!"
 						+ msn.getMessage());
 			}catch (Exception msn) {
 				JOptionPane.showMessageDialog(null, "Algo errado! " + msn.getMessage());
