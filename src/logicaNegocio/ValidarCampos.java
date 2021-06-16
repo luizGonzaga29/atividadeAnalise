@@ -11,7 +11,7 @@ public class ValidarCampos {
 	}
 	
 	public void validarQtdLivro(int qtd) {
-		if(qtd <= 0) {
+		if(qtd < 0) {
 			throw new LivrariaException("Quantidade deve ser um valor maior que zero!");
 		}
 	}
